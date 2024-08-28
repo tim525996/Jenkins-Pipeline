@@ -1,40 +1,41 @@
 pipeline {
     agent any
-    environment {
-        DIRECTORY_PATH = "Drectory path"
-        TESTING_ENVIRONMENT = "Testing environment"
-        PRODUCTION_ENVIRONMENT = "Tithira"
-    }
-    stages{
+       stages{
         stage('Build'){
             steps{
-                echo "Build started and completed!"
-                echo "fetch the  source  code  from  the  directory  path  specified  by  the  environment variable!"
+                echo "Build started with Maven and completed!"
+                echo "fetch the  source  code  from  the  specified directory  path!"
                 echo "compile the code and generate any necessary artifacts!"
         }
     }
-        stage('Test'){
+        stage('Unit and Integration Tests'){
             steps{
-                echo "Test started and completed!"
+                echo "Unit and Integration Tests started and completed with JUnit!"
                 echo "unit test"
                 echo "integration test"
         }
     }
-        stage('Code Quality Check'){
+        stage('Code Analysis'){
             steps{
-                echo "Code Quality Check started and completed!"
+                echo "Code Analysis started and completed with SonarQube!"
                 echo "check  the quality of the code"
             }
         }
-        stage('Deploy'){
+        stage('Security Scan'){
             steps{
-                echo "Deploy started and completed!"
-                echo "deploy  the  application  to  a  testing  environment specified by the environment variable"
+                echo "Security Scan started and completed with OWASP ZAP!"
+                echo "deploy  the  required security measurements specified by the security scan"
             }
         }
-        stage('Approval'){
+           stage('Deploy to Staging'){
             steps{
-                echo "Approval started and completed!"
+                echo "Deploy to staging started and completed with AWS EC2!"
+                echo "deploy  the  application  to  a  testing  environment specified"
+            }
+        }
+        stage('Integration Tests on Staging'){
+            steps{
+                echo "Integration Tests on Staging started and completed with Selenium!"
                 timeout(time: 10, unit: 'SECONDS')
             {
                 sleep(5)
@@ -43,8 +44,8 @@ pipeline {
         }
         stage('Deploy to Production'){
             steps{
-                echo "Deploy to Production started and completed!"
-                echo "Deploy the code $PRODUCTION_ENVIRONMENT!"
+                echo "Deploy to Production started and completed with AWS EC2!"
+                echo "Deploy the code specified!"
             }
         }
     }
