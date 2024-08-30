@@ -24,11 +24,9 @@ pipeline {
                     body: "Unit and Integration Tests were successful!"
                 }
             }
-            steps{
-                echo "Unit and Integration Tests started and completed with JUnit!"
+            echo "Unit and Integration Tests started and completed with JUnit!"
                 echo "unit test"
-                echo "integration test"
-        }
+                echo "integration test"            
     }
         stage('Code Analysis'){
             steps{
@@ -47,10 +45,8 @@ pipeline {
                     body: "Security Scan was successful!"
                 }
             }
-            steps{
-                echo "Security Scan started and completed with OWASP ZAP!"
-                echo "deploy  the  required security measurements against the vulnerabilities, specified by the security scan "
-            }
+            echo "Security Scan started and completed with OWASP ZAP!"
+            echo "deploy  the  required security measurements against the vulnerabilities, specified by the security scan "
         }
            stage('Deploy to Staging'){
             steps{
