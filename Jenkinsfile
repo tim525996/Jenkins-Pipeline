@@ -15,6 +15,16 @@ pipeline {
     }
         stage('Unit and Integration Tests'){
             steps{
+                echo "Unit and Integration testing...."
+            }
+            post{
+                success{
+                    mail to: "tithira.m@gmail.com",
+                    subject: "Unit and Integration Tests Status Email",
+                    body: "Unit and Integration Tests were successful!"
+                }
+            }
+            steps{
                 echo "Unit and Integration Tests started and completed with JUnit!"
                 echo "unit test"
                 echo "integration test"
@@ -27,6 +37,16 @@ pipeline {
             }
         }
         stage('Security Scan'){
+            steps{
+                echo "Security scan running...."
+            }
+            post{
+                success{
+                    mail to: "tithira.m@gmail.com",
+                    subject: "Security Scan Status Email",
+                    body: "Security Scan was successful!"
+                }
+            }
             steps{
                 echo "Security Scan started and completed with OWASP ZAP!"
                 echo "deploy  the  required security measurements against the vulnerabilities, specified by the security scan "
