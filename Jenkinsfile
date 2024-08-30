@@ -24,9 +24,11 @@ pipeline {
                     body: "Unit and Integration Tests were successful!"
                 }
             }
-            echo "Unit and Integration Tests started and completed with JUnit!"
+            steps{
+                echo "Unit and Integration Tests started and completed with JUnit!"
                 echo "unit test"
-                echo "integration test"            
+                echo "integration test"
+            }                                        
     }
         stage('Code Analysis'){
             steps{
