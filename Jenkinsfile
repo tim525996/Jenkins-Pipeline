@@ -16,6 +16,9 @@ pipeline {
         stage('Unit and Integration Tests'){
             steps{
                 echo "Unit and Integration testing...."
+                echo "Unit and Integration Tests started and completed with JUnit!"
+                echo "unit test"
+                echo "integration test"
             }
             post{
                 success{
@@ -23,12 +26,7 @@ pipeline {
                     subject: "Unit and Integration Tests Status Email",
                     body: "Unit and Integration Tests were successful!"
                 }
-            }
-            steps{
-                echo "Unit and Integration Tests started and completed with JUnit!"
-                echo "unit test"
-                echo "integration test"
-            }                                        
+            }                                                
     }
         stage('Code Analysis'){
             steps{
