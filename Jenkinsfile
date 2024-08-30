@@ -1,10 +1,15 @@
 pipeline {
     agent any
+    environment {
+        DIRECTORY_PATH = "Drectory path"
+        TESTING_ENVIRONMENT = "Testing environment"
+        PRODUCTION_ENVIRONMENT = "Tithira"
+    }
        stages{
         stage('Build'){
             steps{
                 echo "Build started with Maven and completed!"
-                echo "fetch the  source  code  from  the  specified directory  path!"
+                echo "fetch the  source  code  from $DIRECTORY_PATH!"
                 echo "compile the code and generate any necessary artifacts!"
         }
     }
@@ -24,7 +29,7 @@ pipeline {
         stage('Security Scan'){
             steps{
                 echo "Security Scan started and completed with OWASP ZAP!"
-                echo "deploy  the  required security measurements specified by the security scan"
+                echo "deploy  the  required security measurements against the vulnerabilities, specified by the security scan "
             }
         }
            stage('Deploy to Staging'){
@@ -45,7 +50,7 @@ pipeline {
         stage('Deploy to Production'){
             steps{
                 echo "Deploy to Production started and completed with AWS EC2!"
-                echo "Deploy the code specified!"
+                echo "Deploy the code $PRODUCTION_ENVIRONMENT!"
             }
         }
     }
