@@ -37,6 +37,8 @@ pipeline {
         stage('Security Scan'){
             steps{
                 echo "Security scan running...."
+                echo "Security Scan started and completed with OWASP ZAP!"
+                echo "deploy  the  required security measurements against the vulnerabilities, specified by the security scan "
             }
             post{
                 success{
@@ -44,9 +46,7 @@ pipeline {
                     subject: "Security Scan Status Email",
                     body: "Security Scan was successful!"
                 }
-            }
-            echo "Security Scan started and completed with OWASP ZAP!"
-            echo "deploy  the  required security measurements against the vulnerabilities, specified by the security scan "
+            }            
         }
            stage('Deploy to Staging'){
             steps{
