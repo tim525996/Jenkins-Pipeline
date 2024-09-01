@@ -24,7 +24,7 @@ pipeline {
                 success{
                     mail to: "tithira.m@gmail.com",
                     subject: "Unit and Integration Tests Status Email",
-                    body: "Unit and Integration Tests were successful!"
+                    body: "Unit and Integration Tests were successful!"                    
                 }
             }                                                
     }
@@ -39,12 +39,14 @@ pipeline {
                 echo "Security scan running...."
                 echo "Security Scan started and completed with OWASP ZAP!"
                 echo "deploy  the  required security measurements against the vulnerabilities, specified by the security scan "
+                writeFile file: 'security_scan_log.txt', text: 'Dummy log content for Security Scan.'
             }
             post{
                 success{
                     mail to: "tithira.m@gmail.com",
                     subject: "Security Scan Status Email",
                     body: "Security Scan was successful!"
+                    attachmentsPattern: 'security_scan_log.txt'
                 }
             }                       
         }
