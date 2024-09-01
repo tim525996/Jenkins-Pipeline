@@ -41,15 +41,12 @@ pipeline {
                 echo "deploy  the  required security measurements against the vulnerabilities, specified by the security scan "
             }
             post{
-                success{
-                    script{                        
+                script{                        
                         mail to: "tithira.m@gmail.com",
                         subject: "Security Scan Status Email",
-                        body: "Security Scan was successful!",
-                            attachmentsPattern: "**/test-results.log"
+                        body: "Security Scan was successful!",                            
                     }
-                }
-            }            
+                }                       
         }
            stage('Deploy to Staging'){
             steps{
