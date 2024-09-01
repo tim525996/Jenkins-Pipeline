@@ -47,7 +47,7 @@ pipeline {
                         to: "tithira.m@gmail.com",
                         subject: "Security Scan Status Email",
                         body: "Security Scan was successful!"
-                        attachmentsPattern: 'security_scan_log.txt'
+                        attachmentsPattern: "security_scan_log.txt"
                     )
                 }
             }                       
