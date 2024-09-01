@@ -42,9 +42,12 @@ pipeline {
             }
             post{
                 success{
-                    mail to: "tithira.m@gmail.com",
-                    subject: "Security Scan Status Email",
-                    body: "Security Scan was successful!"
+                    script{                        
+                        mail to: "tithira.m@gmail.com",
+                        subject: "Security Scan Status Email",
+                        body: "Security Scan was successful!",
+                            attachmentsPattern: "**/test-results.log"
+                    }
                 }
             }            
         }
