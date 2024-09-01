@@ -19,6 +19,7 @@ pipeline {
                 echo "Unit and Integration Tests started and completed with JUnit!"
                 echo "unit test"
                 echo "integration test"
+                writeFile file: 'build.log', text: 'Build log content for demonstration.'
             }
             post{
                 success{
