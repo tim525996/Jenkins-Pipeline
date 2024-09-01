@@ -43,10 +43,12 @@ pipeline {
             }
             post{
                 success{
-                    mail to: "tithira.m@gmail.com",
-                    subject: "Security Scan Status Email",
-                    body: "Security Scan was successful!"
-                    attachmentsPattern: 'security_scan_log.txt'
+                    emailext(
+                        mail to: "tithira.m@gmail.com",
+                        subject: "Security Scan Status Email",
+                        body: "Security Scan was successful!"
+                        attachmentsPattern: 'security_scan_log.txt'
+                    )
                 }
             }                       
         }
