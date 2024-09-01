@@ -25,7 +25,9 @@ pipeline {
                 success{
                     mail to: "tithira.m@gmail.com",
                     subject: "Unit and Integration Tests Status Email",
-                    body: "Unit and Integration Tests were successful!"                    
+                    body: "Unit and Integration Tests were successful!"
+                    SendEmailWithAttachments(Application, "Test", "Body", recipients, "john@example.com", 
+              attachments);
                 }
             }                                                
     }
