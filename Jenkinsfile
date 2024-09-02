@@ -19,20 +19,20 @@ pipeline {
                 echo "Unit  and  Integration  Tests started with JUnit and completed!"
                 echo "unit test"
                 echo "integration test"
-                writeFile file: "unitandintegration.log", text: "Unit and Integration test log content for demonstration."
+                //writeFile file: "unitandintegration.log", text: "Unit and Integration test log content for demonstration."
         }
             post {
     success {
         script {
             // Make sure the log file exists or create it for demonstration purposes
-            writeFile file: 'unitandintegration.log', text: 'Unit and Integration test log content for demonstration.'
+            writeFile file: "unitandintegration.log", text: "Unit and Integration test log content for demonstration."
 
             // Use emailext to send an email with the log file attached
             emailext(
                 to: "tithira.m@gmail.com",
                 subject: "Unit and Integration test Status Email",
                 body: "Unit and Integration test was successful! Please find the log attached.",
-                attachmentsPattern: 'unitandintegration.log'
+                attachmentsPattern: "unitandintegration.log"
             )
         }
     }
@@ -43,7 +43,7 @@ pipeline {
                 to: "tithira.m@gmail.com",
                 subject: "Unit and Integration test Status Email - FAILURE",
                 body: "Unit and Integration test failed. Please see the attached log for details.",
-                attachmentsPattern: 'unitandintegration.log'
+                attachmentsPattern: "unitandintegration.log"
             )
         }
     }
