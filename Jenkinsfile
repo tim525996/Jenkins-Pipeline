@@ -13,6 +13,14 @@ pipeline {
                 echo "compile the code and generate any necessary artifacts!"
         }
     }                         
+        stage('Unit  and  Integration  Tests'){
+            steps{
+                echo "Unit and Integration testing...."
+                echo "Unit  and  Integration  Tests started with JUnit and completed!"
+                echo "unit test"
+                echo "integration test"
+        }
+    }
         stage('Code Analysis'){
             steps{
                 echo "Code Analysis started and completed with SonarQube!"
