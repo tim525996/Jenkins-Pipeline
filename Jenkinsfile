@@ -12,22 +12,7 @@ pipeline {
                 echo "fetch the  source  code  from $DIRECTORY_PATH!"
                 echo "compile the code and generate any necessary artifacts!"
         }
-    }
-        stage('Unit and Integration Tests'){
-            steps{
-                echo "Unit and Integration testing...."
-                echo "Unit and Integration Tests started and completed with JUnit!"
-                echo "unit test"
-                echo "integration test"
-                writeFile file: 'build.log', text: 'Build log content for demonstration.'
-            }
-            post{
-                success{                    
-                    mail to: "tithira.m@gmail.com",
-                    subject: "Unit and Integration testing Email",
-                    body: "Unit and Integration testing was successful!"                                        
-                }
-            }                      
+    }                         
         stage('Code Analysis'){
             steps{
                 echo "Code Analysis started and completed with SonarQube!"
@@ -72,4 +57,3 @@ pipeline {
     }
 }
 
-}
