@@ -21,14 +21,30 @@ pipeline {
                 echo "integration test"
                 writeFile file: 'build.log', text: 'Build log content for demonstration.'
             }
-            post{
-                success{
-                    mail to: "tithira.m@gmail.com",
-                    subject: "Unit and Integration Tests Status Email",
-                    body: "Unit and Integration Tests were successful!"
-                    attachmentsPattern: "build.log"
+            post {
+                success {
+                    script {
+                        // Send email on success with log file attached
+                        emailext(
+                            to: 'tithira.m@gmail.com',
+                            subject: "Unit and Integration Tests Status Email",
+                            body: "Unit and Integration Tests were successful! Please find the test log attached.",
+                            attachmentsPattern: 'test-results.log'
+                        )
+                    }
                 }
-            }                                                
+                failure {
+                    script {
+                        // Send email on failure with log file attached
+                        emailext(
+                            to: 'tithira.m@gmail.com',
+                            subject: "Unit and Integration Tests Status Email - FAILURE",
+                            body: "Unit and Integration Tests failed. Please see the attached log for details.",
+                            attachmentsPattern: 'test-results.log'
+                        )
+                    }
+                }
+            }                                           
     }
         stage('Code Analysis'){
             steps{
