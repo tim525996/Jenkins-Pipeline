@@ -21,9 +21,9 @@ pipeline {
                 echo "integration test"
                 writeFile file: 'build.log', text: 'Build log content for demonstration.'
             }
-            post {
-                mail to: "tithira.m@gmail.com"
-                success {                    
+            post {                
+                success {
+                    mail to: "tithira.m@gmail.com"
                     script {
                         // Send email on success with log file attached
                         emailext(
