@@ -26,7 +26,7 @@ pipeline {
                     mail to: "tithira.m@gmail.com",
                     subject: "Unit and Integration Tests Status Email",
                     body: "Unit and Integration Tests were successful!"
-                    attachmentsPattern: build.log
+                    attachmentsPattern: "build.log"
                 }
             }                                                
     }
