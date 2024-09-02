@@ -25,7 +25,7 @@ pipeline {
                 success {
                     script {
                         // Make sure the log file exists or create it for demonstration purposes
-                        writeFile file: 'unitandintegration.log', text: 'Unit and Integration test log content for demonstration.'
+                        writeFile file: "unitandintegration.log", text: "Unit and Integration test log content for demonstration."
 
                         // Use emailext to send an email with the log file attached
                     emailext(
