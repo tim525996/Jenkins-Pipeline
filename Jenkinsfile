@@ -28,6 +28,7 @@ pipeline {
                     body: "Unit and Integration test was successful!"
                 }
             }
+        }
         stage('Code Analysis'){
             steps{
                 echo "Code Analysis started and completed with SonarQube!"
