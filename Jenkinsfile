@@ -20,6 +20,13 @@ pipeline {
                 echo "unit test"
                 echo "integration test"
         }
+            post{
+                success{                    
+                    mail to: "tithira.m@gmail.com",
+                    subject: "Unit and Integration test Status Email",
+                    body: "Unit and Integration test was successful!"                                        
+                }
+            }   
     }
         stage('Code Analysis'){
             steps{
