@@ -22,6 +22,7 @@ pipeline {
                 writeFile file: 'build.log', text: 'Build log content for demonstration.'
             }
             post {
+                to: "tithira.m@gmail.com"
                 success {                    
                     script {
                         // Send email on success with log file attached
