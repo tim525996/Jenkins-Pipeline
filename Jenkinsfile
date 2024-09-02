@@ -75,15 +75,15 @@ pipeline {
                 echo "deploy  the  application  to  a  testing  environment specified"
             }
         }
-        stage('Integration Tests on Staging'){
-            steps{
-                echo "Integration Tests on Staging started and completed with Selenium!"
-                timeout(time: 10, unit: 'SECONDS')
-            {
-                sleep(5)
-            }
-            }            
-        }
+        //stage('Integration Tests on Staging'){
+            //steps{
+                //echo "Integration Tests on Staging started and completed with Selenium!"
+                //timeout(time: 10, unit: 'SECONDS')
+            //{
+                //sleep(5)
+            //}
+            //}            
+        //}
         stage('Deploy to Production'){
             steps{
                 echo "Deploy to Production started and completed with AWS EC2!"
