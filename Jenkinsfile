@@ -23,10 +23,10 @@ pipeline {
             }
             post {
                 success {
+                    mail to: "tithira.m@gmail.com"
                     script {
                         // Send email on success with log file attached
-                        emailext(
-                            mail to: 'tithira.m@gmail.com',
+                        emailext(                            
                             subject: "Unit and Integration Tests Status Email",
                             body: "Unit and Integration Tests were successful! Please find the test log attached.",
                             attachmentsPattern: 'test-results.log'
@@ -36,8 +36,7 @@ pipeline {
                 failure {
                     script {
                         // Send email on failure with log file attached
-                        emailext(
-                            mail to: 'tithira.m@gmail.com',
+                        emailext(                            
                             subject: "Unit and Integration Tests Status Email - FAILURE",
                             body: "Unit and Integration Tests failed. Please see the attached log for details.",
                             attachmentsPattern: 'test-results.log'
