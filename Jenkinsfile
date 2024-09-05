@@ -29,7 +29,7 @@ pipeline {
 
             // Sending email with attachment using emailext
             emailext(
-                mail to: "tithira.m@gmail.com",
+                to: "tithira.m@gmail.com",
                 subject: "Unit and Integration test Status Email",
                 body: "Unit and Integration test was successful! Please find the log attached.",
                 attachmentsPattern: "unitandintegration.log"
@@ -39,7 +39,7 @@ pipeline {
     failure {
         script {
             emailext(
-                mail to: "tithira.m@gmail.com",
+                to: "tithira.m@gmail.com",
                 subject: "Unit and Integration test Status Email - FAILURE",
                 body: "Unit and Integration test failed. Please see the attached log for details.",
                 attachmentsPattern: "unitandintegration.log"
