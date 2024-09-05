@@ -26,7 +26,7 @@ pipeline {
                     script {
                         emailext subject: "Jenkins: Test Stage Success",
                                  body: "The Test stage completed successfully.",
-                                 mail to: "tithira.m@gmail.com",
+                                 to: "tithira.m@gmail.com",
                                  attachmentsPattern: "unitandintegration.log"
                     }
                 }
@@ -34,7 +34,7 @@ pipeline {
                     script {
                         emailext subject: "Jenkins: Test Stage Failure",
                                  body: "The Test stage failed. Please see the attached log for details.",
-                                 mail to: "tithira.m@gmail.com",
+                                 to: "tithira.m@gmail.com",
                                  attachmentsPattern: "unitandintegration.log"
                     }
                 }
