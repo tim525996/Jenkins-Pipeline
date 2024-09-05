@@ -25,24 +25,24 @@ pipeline {
     success {
         script {
             // Creating a log file
-            writeFile file: 'unitandintegration.log', text: 'Unit and Integration test log content for demonstration.'
+            writeFile file: "unitandintegration.log", text: "Unit and Integration test log content for demonstration."
 
             // Sending email with attachment using emailext
             emailext(
-                to: 'tithira.m@gmail.com',
+                mail to: "tithira.m@gmail.com",
                 subject: "Unit and Integration test Status Email",
                 body: "Unit and Integration test was successful! Please find the log attached.",
-                attachmentsPattern: 'unitandintegration.log'
+                attachmentsPattern: "unitandintegration.log"
             )
         }
     }
     failure {
         script {
             emailext(
-                to: 'tithira.m@gmail.com',
+                mail to: "tithira.m@gmail.com",
                 subject: "Unit and Integration test Status Email - FAILURE",
                 body: "Unit and Integration test failed. Please see the attached log for details.",
-                attachmentsPattern: 'unitandintegration.log'
+                attachmentsPattern: "unitandintegration.log"
             )
         }
     }
