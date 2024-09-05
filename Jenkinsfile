@@ -11,6 +11,7 @@ pipeline {
                 echo "Build started with Maven and completed!"
                 echo "fetch the  source  code  from $DIRECTORY_PATH!"
                 echo "compile the code and generate any necessary artifacts!"
+                emailext attachLog: true, body: 'Extended Test Email', subject: 'Extended Email test', to: 'tithira.m@gmail.com'
         }
     }                         
         stage('Unit  and  Integration  Tests'){
@@ -19,24 +20,13 @@ pipeline {
                 echo "Unit  and  Integration  Tests started with JUnit and completed!"
                 echo "unit test"
                 echo "integration test"
-                writeFile file: "unitandintegration.log", text: "Unit and Integration test log content for demonstration."
+                //writeFile file: "unitandintegration.log", text: "Unit and Integration test log content for demonstration."
         }
-            post {
-                success {
-                    script {
-                        emailext subject: "Jenkins: Test Stage Success",
-                                 body: "The Test stage completed successfully.",
-                                 to: "tithira.m@gmail.com",
-                                 attachmentsPattern: "unitandintegration.log"
-                    }
-                }
-                failure {
-                    script {
-                        emailext subject: "Jenkins: Test Stage Failure",
-                                 body: "The Test stage failed. Please see the attached log for details.",
-                                 to: "tithira.m@gmail.com",
-                                 attachmentsPattern: "unitandintegration.log"
-                    }
+            post{
+                success{                    
+                    mail to: "tithira.m@gmail.com",
+                    subject: "Unit and Integration test Status Email",
+                    body: "Unit and Integration test was successful!"
                 }
             }
         }
@@ -83,4 +73,3 @@ pipeline {
         }
     }
 }
-
