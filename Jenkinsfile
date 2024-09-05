@@ -11,7 +11,7 @@ pipeline {
                 echo "Build started with Maven and completed!"
                 echo "fetch the  source  code  from $DIRECTORY_PATH!"
                 echo "compile the code and generate any necessary artifacts!"
-                emailext attachLog: true, body: 'Extended Test Email', subject: 'Extended Email test', to: 'tithira.m@gmail.com'
+                emailext attachLog: true, body: "Extended Test Email", subject: "Extended Email test", to: "tithira.m@gmail.com"
         }
     }                         
         stage('Unit  and  Integration  Tests'){
