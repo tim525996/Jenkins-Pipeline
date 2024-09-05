@@ -19,34 +19,26 @@ pipeline {
                 echo "Unit  and  Integration  Tests started with JUnit and completed!"
                 echo "unit test"
                 echo "integration test"
-                //writeFile file: "unitandintegration.log", text: "Unit and Integration test log content for demonstration."
+                writeFile file: "unitandintegration.log", text: "Unit and Integration test log content for demonstration."
         }
             post {
-    success {
-        script {
-            // Creating a log file
-            writeFile file: "unitandintegration.log", text: "Unit and Integration test log content for demonstration."
-
-            // Sending email with attachment using emailext
-            emailext(
-                to: "tithira.m@gmail.com",
-                subject: "Unit and Integration test Status Email",
-                body: "Unit and Integration test was successful! Please find the log attached.",
-                attachmentsPattern: "unitandintegration.log"
-            )
-        }
-    }
-    failure {
-        script {
-            emailext(
-                to: "tithira.m@gmail.com",
-                subject: "Unit and Integration test Status Email - FAILURE",
-                body: "Unit and Integration test failed. Please see the attached log for details.",
-                attachmentsPattern: "unitandintegration.log"
-            )
-        }
-    }
-}
+                success {
+                    script {
+                        emailext subject: "Jenkins: Test Stage Success",
+                                 body: "The Test stage completed successfully.",
+                                 to: "tithira.m@gmail.com",
+                                 attachmentsPattern: "unitandintegration.log"
+                    }
+                }
+                failure {
+                    script {
+                        emailext subject: "Jenkins: Test Stage Failure",
+                                 body: "The Test stage failed. Please see the attached log for details.",
+                                 to: "tithira.m@gmail.com",
+                                 attachmentsPattern: "unitandintegration.log"
+                    }
+                }
+            }
         }
         stage('Code Analysis'){
             steps{
